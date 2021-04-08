@@ -1,0 +1,115 @@
+# Better tests with dockertest
+
+08.04.2021
+Tags: go, docker, testing
+Summary: Introduction into integration-tests with dockertest
+
+Maximilian Breida
+maximilian.breida@clarilab.de
+
+## Agenda
+
+- What is dockertest?
+- Integration testing
+- Why do I need it?
+- Examples
+
+.background assets/bg.png
+
+## What is dockertest?
+
+- Lib to make integration tests easier
+- Automates interaction with Docker API
+- Run your tests against real third-party services
+
+<br>**Things that you can test with dockertest:**
+- MongoDB
+- S3
+- Elasticsearch
+- Redis
+- RabbitMQ  
+- ...
+  
+.background assets/bg.png
+
+## Integration testing
+
+- Mocks:
+  - are nice, but they don't test real life scenarios
+  - creating mock data takes up time
+- Shared testing database:
+  - we need to set some env-vars, credentials etc.
+  - we can leave test data that is never cleaned up
+  - not really practical for CI/CD
+- Docker: 
+  - we test the actual functionality
+  - runs on basically every machine, also CI/CD
+  - need to share scripts or document how to run our integration tests
+
+.background assets/bg.png
+
+## Why do I need it?
+
+.image assets/why.gif 500 _
+.caption all the other devs in this meeting
+.background assets/bg.png
+
+## Why do I need it?
+    
+- Dockertest:
+    - no additional setup to run tests (other than a running docker client)  
+    - containers start up for duration of test and are cleaned up automatically
+    - can be used in build pipeline
+    - easy to use API
+
+To sum it up:
+
+.image assets/hack.gif _ 350
+.background assets/bg.png
+
+## That's cool, but how do I use it?
+
+.image assets/how.gif 500 _
+.caption probably someone in this meeting
+.background assets/bg.png
+
+## MongoDB
+
+.code examples/mongo_test.go /START1 OMIT/,/END1 OMIT/
+.background assets/bg.png
+
+## MongoDB
+
+.code examples/mongo_test.go /START2 OMIT/,/END2 OMIT/
+.background assets/bg.png
+
+##
+
+.image assets/hackerman.gif 500 _
+.background assets/bg.png
+
+## S3
+
+.code examples/s3_test.go /START1 OMIT/,/END1 OMIT/
+.background assets/bg.png
+
+## S3
+
+.code examples/s3_test.go /START2 OMIT/,/END2 OMIT/
+.background assets/bg.png
+
+## S3
+
+.code examples/s3_test.go /START3 OMIT/,/END3 OMIT/
+.background assets/bg.png
+
+##
+
+.image assets/wwe_meme.jpg 550 _
+.background assets/bg.png
+
+## Links
+
+https://github.com/ory/dockertest
+
+.background assets/bg.png
